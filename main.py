@@ -12,8 +12,8 @@ def get_user(username: str):
     response = requests.get(f"https://api.github.com/users/{username}")
     if response.status_code == 404: 
         raise HTTPException(status_code=404, detail=f"User:{username} not found")
-    if response.status_code == 403:
-        raise HTTPException(status_code=403, detail=f"API limit exceeded. Authenticate or Try Again")
+    if response.status_code == 429:
+        raise HTTPException(status_code=429, detail=f"API limit exceeded. Authenticate or Try Again")
     if response.status_code != 200:
         raise HTTPException(
             status_code=response.status_code,
@@ -44,7 +44,7 @@ def get_weather(city: str):
     
     json_return = {
         "city": weather_response["name"],
-        "temperature": round(weather_response["main"]["temp"] - 273.15, 2),
+        "temperature": weather_response["main"]["temp"],
         "weather description": weather_response["weather"][0]["description"]
     }
     return json_return
