@@ -15,27 +15,24 @@ This project is a simple FastAPI application that provides two endpoints:
 ## Setup
 
 ### 1. Clone the repository
+
 ```markdown
-```bash
 git clone https://github.com/USERNAME/REPO.git
-cd REPO 
-    ```
+cd REPO ```
 
 ### 2. Create and activate a virtual environment
+
 ```markdown
-```bash
 python3 -m venv venv
 source venv/bin/activate
     ``` 
 ### 3. Install dependencies & .env 
 ```markdown
-```bash
 pip install -r requirements.txt
 touch .env
     ``` 
 ### 4. Add your OpenWeatherMap API key inside .env & Run the FastAPI server
 ```markdown
-```bash
 API_KEY=your_openweathermap_api_key
 uvicorn main:app --reload
     ```
